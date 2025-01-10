@@ -29,7 +29,7 @@ The project is structured as follows:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/LibraryManager.git
+   git clone https://github.com/nXhermane/LibraryManager.git
    cd LibraryManager
    ```
 
