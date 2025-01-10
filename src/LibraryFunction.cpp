@@ -3,6 +3,10 @@
 #include <iostream>
 #include <limits>
 #include <cstring>
+/**
+ *  Documentation maked by Mintlify Doc Writer
+ * @author Mintlify Doc Writer
+ *  */
 
 /**
  * The function `creerUnLivre` creates a book object by taking input for its title, author, genre, and

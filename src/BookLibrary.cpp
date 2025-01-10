@@ -5,6 +5,11 @@
 #include <limits>
 
 /**
+ *  Documentation maked by Mintlify Doc Writer
+ * @author Mintlify Doc Writer
+ *  */
+
+/**
  * The BookLibraryManager constructor initializes the bookSize variable to 0, sets the libraryBooks
  * pointer to nullptr, and calls the init function.
  */
