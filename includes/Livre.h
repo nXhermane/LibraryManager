@@ -1,9 +1,13 @@
 #pragma once
 #include <iostream>
-struct Livre
+
+namespace BasicalLibrary
 {
-    char *auteur;
-    char *titre;
-    char *genre;
-    int publicationWeek;
-};
+    struct Livre
+    {
+        char *auteur;
+        char *titre;
+        char *genre;
+        int publicationWeek;
+    };
+}

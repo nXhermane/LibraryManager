@@ -1,17 +1,20 @@
 #pragma once
 #include "Livre.h"
-
-Livre creerUnLivre();
-Livre *ajouterUnLivre(const Livre &livre, Livre *livres, int &livresLength);
-Livre *supprimerUnLivre(const char *titre, Livre *livres, int &livresLength);
-void afficherUnLivre(const Livre &livre);
-void rechercherUnLivre(const char *titre, Livre *livres, int &livresLength);
-
-struct ResultatDeRecherche
+namespace BasicalLibrary
 {
-    Livre *livre;
-    int index;
-};
+    Livre creerUnLivre();
+    Livre *ajouterUnLivre(const Livre &livre, Livre *livres, int &livresLength);
+    Livre *supprimerUnLivre(const char *titre, Livre *livres, int &livresLength);
+    void afficherUnLivre(const Livre &livre);
+    void rechercherUnLivre(const char *titre, Livre *livres, int &livresLength);
 
-ResultatDeRecherche rechercherUnLivreParTitre(const char *titre, Livre *livres, int &livresLength);
-bool confirmationFunction(const char *prompt);
+    struct ResultatDeRecherche
+    {
+        Livre *livre;
+        int index;
+    };
+
+    ResultatDeRecherche rechercherUnLivreParTitre(const char *titre, Livre *livres, int &livresLength);
+    bool confirmationFunction(const char *prompt);
+
+}

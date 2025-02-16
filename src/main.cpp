@@ -7,6 +7,6 @@
 
 int main()
 {
-    BookLibraryManager bookLibray;
+    BasicalLibrary::BookLibraryManager bookLibray;
     return 0;
 }
