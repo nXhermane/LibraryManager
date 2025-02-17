@@ -10,6 +10,8 @@ namespace AvancedLibrary
     {
 
     public:
+        Library(std::vector<std::shared_ptr<Book>> books);
+
         void addBook(const std::string &isbn, const std::string &title, const std::string &author, int year);
         void removeBook(const std::string &isbn);
 
@@ -22,6 +24,6 @@ namespace AvancedLibrary
         size_t getAvailableBooks() const;
 
     private:
-        std::unordered_map<std::string, std::shared_ptr<Book>> books;
-    }
+        std::unordered_map<std::string , std::shared_ptr<Book>> books;
+    };
 }
