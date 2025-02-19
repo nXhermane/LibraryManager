@@ -59,7 +59,7 @@ namespace AvancedLibrary
     }
     size_t Library::getAvailableBooks() const
     {
-        return std::count_if(books.begin(),books.end(),[](const auto& pair)->bool {
-            return pair.second->isAvailable();});
+        return std::count_if(books.begin(), books.end(), [](const auto &pair) -> bool
+                             { return pair.second->isAvailable(); });
     }
-    }
+}
