@@ -1,19 +1,24 @@
 cmake_minimum_required(VERSION 3.16)
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-# add includes directories to the project and access to relative path 
-include_directories(includes)
-
-# list all source file 
-file(GLOB SOURCE_FILE "./src/*.cpp")
 
 # define a project name
 project(LIBRARY_MANAGER)
 
-# add executable to the project 
+# set Cxx standard to 23
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# add includes directories to the project and access to relative path 
+include_directories("./includes" "includes/shared/core" "includes/shared/domain" "./includes/shared/exceptions" "./includes/value-objects" "./includes/entities")
+
+# list all source file 
+file(GLOB_RECURSE SOURCE_FILE "./src/*.cpp")
+
+#add executable to the project 
 add_executable(LIBRARY_MANAGER ${SOURCE_FILE})
 
+find_package(Boost)
+target_link_libraries(LIBRARY_MANAGER PRIVATE Boost::boost)
 # add custom target to execute a command 
 add_custom_target(
     run COMMAND LIBRARY_MANAGER WORKING_DIRECTORY "./"

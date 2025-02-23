@@ -1,1 +1,4 @@
 build/*
+/.clang-format/
+.cache
+CMakeUserPresets.json

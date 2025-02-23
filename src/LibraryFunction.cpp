@@ -1,10 +1,10 @@
-#include "LibraryFunction.h"
-#include "Livre.h"
+#include <cstring>
 #include <iostream>
 #include <limits>
-#include <cstring>
-namespace BasicalLibrary
-{
+
+#include "LibraryFunction.h"
+#include "Livre.h"
+namespace BasicalLibrary {
     /**
      *  Documentation maked by Mintlify Doc Writer
      * @author Mintlify Doc Writer
@@ -19,8 +19,7 @@ namespace BasicalLibrary
      * function prompts the user to input these details and then returns a `Livre` object with the
      * information provided by the user.
      */
-    Livre creerUnLivre()
-    {
+    Livre creerUnLivre() {
         Livre livre;
         const int maxChar = 200;
         livre.titre = new char[maxChar];
@@ -34,17 +33,14 @@ namespace BasicalLibrary
         std::cout << "Entrez le genre : ";
         std::cin.getline(livre.genre, maxChar);
 
-        while (true)
-        {
+        while (true) {
             std::cout << "Entrez l'annee de publication : ";
             std::cin >> livre.publicationWeek;
-            if (std::cin.fail())
-            {
+            if (std::cin.fail()) {
                 std::cout << "Veillez entrer un nombre entier." << std::endl;
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            }
-            else
+            } else
                 break;
         }
 
@@ -59,8 +55,7 @@ namespace BasicalLibrary
      * parameter `livre` is of type `Livre`, which seems to be a struct or class containing information
      * about a book such as its title, author, genre, and publication year.
      */
-    void afficherUnLivre(const Livre &livre)
-    {
+    void afficherUnLivre(const Livre &livre) {
         std::cout << "Titre                : " << livre.titre << std::endl;
         std::cout << "Auteur               : " << livre.auteur << std::endl;
         std::cout << "Genre                : " << livre.genre << std::endl;
@@ -83,12 +78,10 @@ namespace BasicalLibrary
      * length of the existing array. It creates a new array with one additional element, copies the
      * existing elements from the old array to the new array, adds the new
      */
-    Livre *ajouterUnLivre(const Livre &livre, Livre *livres, int &livresLength)
-    {
+    Livre *ajouterUnLivre(const Livre &livre, Livre *livres, int &livresLength) {
         Livre *newLivresList = new Livre[livresLength + 1];
 
-        for (int i = 0; i < livresLength; i++)
-            newLivresList[i] = livres[i];
+        for (int i = 0; i < livresLength; i++) newLivresList[i] = livres[i];
 
         newLivresList[livresLength] = livre;
 
@@ -114,21 +107,17 @@ namespace BasicalLibrary
      * @return The function `supprimerUnLivre` is returning a pointer to a `Livre` object. This pointer
      * points to the new list of books after removing the book with the specified title.
      */
-    Livre *supprimerUnLivre(const char *titre, Livre *livres, int &livresLength)
-    {
+    Livre *supprimerUnLivre(const char *titre, Livre *livres, int &livresLength) {
         ResultatDeRecherche res = rechercherUnLivreParTitre(titre, livres, livresLength);
-        if (res.livre == nullptr)
-        {
+        if (res.livre == nullptr) {
             std::cout << "ERROR: Le livre que vous voulez supprimer n'existe pas dans votre library." << std::endl;
             return livres;
         }
 
         Livre *newLivreList = new Livre[livresLength - 1];
 
-        for (int i = 0, countNewLivre = 0; i < livresLength; i++)
-        {
-            if (res.index == i)
-                continue;
+        for (int i = 0, countNewLivre = 0; i < livresLength; i++) {
+            if (res.index == i) continue;
             newLivreList[countNewLivre++] = livres[i];
         }
 
@@ -151,16 +140,13 @@ namespace BasicalLibrary
      * @return The function `rechercherUnLivreParTitre` is returning a `ResultatDeRecherche` struct. This
      * struct contains a pointer to a `Livre` object (`livre`) and an integer index (`index`).
      */
-    ResultatDeRecherche rechercherUnLivreParTitre(const char *titre, Livre *livres, int &livresLength)
-    {
+    ResultatDeRecherche rechercherUnLivreParTitre(const char *titre, Livre *livres, int &livresLength) {
         ResultatDeRecherche resultat;
         resultat.livre = nullptr;
         resultat.index = 0;
-        for (int i = 0; i < livresLength; i++)
-        {
+        for (int i = 0; i < livresLength; i++) {
             Livre livre = livres[i];
-            if (strstr(titre, livre.titre) != nullptr)
-            {
+            if (strstr(titre, livre.titre) != nullptr) {
                 resultat.livre = &livres[i];
                 resultat.index = i;
             }
@@ -185,11 +171,9 @@ namespace BasicalLibrary
      * performs a search for a book by title and then displays the book information if found, or outputs an
      * error message if the book is not found.
      */
-    void rechercherUnLivre(const char *titre, Livre *livres, int &livresLength)
-    {
+    void rechercherUnLivre(const char *titre, Livre *livres, int &livresLength) {
         ResultatDeRecherche resultat = rechercherUnLivreParTitre(titre, livres, livresLength);
-        if (resultat.livre == nullptr)
-        {
+        if (resultat.livre == nullptr) {
             std::cout << "ERROR: Le livre que vous recherchez n'existe pas." << std::endl;
             return;
         }
@@ -207,8 +191,7 @@ namespace BasicalLibrary
      * @return The confirmationFunction returns a boolean value - true if the user input is 'y' and false
      * otherwise.
      */
-    bool confirmationFunction(const char *prompt)
-    {
+    bool confirmationFunction(const char *prompt) {
         std::cout << prompt << " ";
         char confirmChar;
         std::cin >> confirmChar;
@@ -218,4 +201,4 @@ namespace BasicalLibrary
             return false;
     }
 
-}
+}  // namespace BasicalLibrary
