@@ -24,6 +24,8 @@ int main() {
     AvancedLibrary::User user = AvancedLibrary::User(userProps);
     auto usrProps = user.getProps();
     std::cout << user.getId() << std::endl;
+    
+     
     // BasicalLibrary::BookLibraryManager bookLibray;
     return 0;
 }

@@ -1,0 +1,19 @@
+[Buildset]
+BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x00\x1c\x00L\x00i\x00b\x00r\x00a\x00r\x00y\x00M\x00a\x00n\x00a\x00g\x00e\x00r)
+
+[CMake]
+Build Directory Count=1
+Current Build Directory Index-Système hôte=0
+
+[CMake][CMake Build Directory 0]
+Build Directory Path=/home/hermane/Dev/c++/vscode/LibraryManager/build
+Build Type=Release
+CMake Binary=/run/user/1000/doc/71a606df/cmake
+CMake Executable=/run/user/1000/doc/71a606df/cmake
+Environment Profile=
+Extra Arguments=
+Install Directory=/usr/local
+Runtime=Système hôte
+
+[Project]
+VersionControlSupport=kdevgit

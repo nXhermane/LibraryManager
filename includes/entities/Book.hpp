@@ -23,10 +23,21 @@ namespace AvancedLibrary {
         void validate() const override;
         void addReview(Review review);
         double getAverageRating() const;
-        bool isAvailable() const;
         void addCategory(std::string category);
         void removeCategory(std::string category);
-        std::vector<std::string> getCategories() const;
         void updateStatus(BookStatus status);
+        void changeTitle(std::string&);
+        void changeAuthor(std::string&);
+        void changePublishingYear(int year);
+        void addCopie();
+        // Getters
+        const std::string& getIsbn() const;
+        const std::string& getTitle() const;
+        const std::string& getAuthor() const;
+        BookStatus getStatus() const;
+        bool isAvailable() const;
+        int getCopies() const;
+        const std::vector<Review>& getReviews() const;
+        const std::vector<std::string>& getCategories() const;
     };
 }  // namespace AvancedLibrary
