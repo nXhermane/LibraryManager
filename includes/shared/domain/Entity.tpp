@@ -6,6 +6,7 @@
 #include <chrono>
 #include <exception>
 #include <string>
+#include <type_traits>
 #include <variant>
 
 #include "Entity.hpp"
@@ -26,6 +27,12 @@ namespace Domain {
             updatedAtRef = std::chrono::system_clock::now();
         }
     };
+    template <typename T>
+    template <typename FiealType, typename Func, typename std::enable_if<std::is_class_v<FiealType>, int>::type>
+    void PropsWrapper<T>::modify(FiealType T::*field, Func func) {
+        func(props.*field);
+        updatedAtRef = std::chrono::system_clock::now();
+    }
 
     template <typename T>
     T& PropsWrapper<T>::get() const {

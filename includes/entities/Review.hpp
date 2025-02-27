@@ -3,7 +3,6 @@
 #include <memory>
 #include <string>
 
-
 #include "Entity.hpp"
 #include "User.hpp"
 namespace AvancedLibrary {
@@ -22,7 +21,11 @@ namespace AvancedLibrary {
        public:
         Review(Domain::CreateEntityProps<ReviewProps>& reviewProps);
         void validate() const override;
-        void update(int rating, std::string comment);
+        void update(int rating, std::string& comment);
         bool canModify() const;
+        
+        // Static value
+        static const int minRating{1};
+        static const int maxRating{5};
     };
 }  // namespace AvancedLibrary

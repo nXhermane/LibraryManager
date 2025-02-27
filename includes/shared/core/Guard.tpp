@@ -29,6 +29,13 @@ namespace Core {
             return {false, {}};
         };
     }
-  
+    template <typename T>
+    GuardResponse Guard::inRange(const T &value, const T &min, const T &max) {
+        bool isInRange = value >= min && value <= max;
+        if (!isInRange)
+            return {false, {"The value out of range."}};
+        else
+            return {true, {}};
+    }
 
 }  // namespace Core

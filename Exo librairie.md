@@ -69,3 +69,4 @@ Voulez-vous qu'on commence par implémenter un niveau particulier ? Je peux vous
 3. L'ajout progressif des fonctionnalités avancées
 
 Par où souhaitez-vous commencer ?
+

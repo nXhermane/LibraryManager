@@ -1,0 +1,23 @@
+classDiagram 
+ class Consultation {
+   <<Entity>>
+   UUID id
+   DateTime dateDebut
+   DateTime dateFin
+   ConsultationStatus status 
+   startConsultation()
+   endConsulation()
+   addMeasustement()
+ }
+ class ConsultationMeasurement {
+  <<Value Object>>
+  AnthropometricData anthropometric 
+  BodyComposition bodyComposition 
+  MedicalAnalysis analysis 
+  DateTime measurementTime 
+
+ }
+ Consultation "1" *-- "*" ConsultationMeasurement
+
+
+
