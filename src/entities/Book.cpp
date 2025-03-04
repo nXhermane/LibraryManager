@@ -10,7 +10,9 @@
 #include "Review.hpp"
 namespace AvancedLibrary {
     // constructor
-    Book::Book(Domain::CreateEntityProps<BookProps>& entityProps) : Domain::Entity<BookProps>(entityProps) {}
+    Book::Book(Domain::CreateEntityProps<BookProps>& entityProps) : Domain::Entity<BookProps>(entityProps) {
+        validate();
+    }
 
     void Book::validate() const {
         this->_isValid = false;

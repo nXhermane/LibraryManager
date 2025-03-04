@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <memory>
+#include <optional>
 
 #include "Book.hpp"
 #include "Entity.hpp"
@@ -11,16 +12,16 @@ namespace AvancedLibrary {
     class User;
     enum LoanStatus { ACTIVED, RETURNED, OVERDUE, EXTENDED };
     struct LoanProps {
-        std::chrono::time_point<std::chrono::system_clock> stardDate;
-        std::chrono::time_point<std::chrono::system_clock> dueDate;
-        std::chrono::time_point<std::chrono::system_clock> returnDate;
+        std::optional<std::chrono::time_point<std::chrono::system_clock>> startDate;
+        std::optional<std::chrono::time_point<std::chrono::system_clock>> dueDate;
+        std::optional<std::chrono::time_point<std::chrono::system_clock>> returnDate;
         LoanStatus status;
         std::shared_ptr<User> user;
         std::shared_ptr<Book> book;
     };
     class Loan : public Domain::Entity<LoanProps> {
        public:
-        Loan(std::shared_ptr<User>& user, std::shared_ptr<Book>& book);
+        Loan(Domain::CreateEntityProps<LoanProps>& entityProps);
         void validate() const override;
         bool extend();
         void returnBook();

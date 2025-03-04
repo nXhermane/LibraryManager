@@ -12,6 +12,7 @@ namespace Core {
         template <typename T>
         static GuardResponse isEmpty(const T &value);
         static GuardResponse isNegative(const int &value);
+        static GuardResponse isNegative(const double &value);
         template <typename T>
         static GuardResponse inRange(const T &value, const T &min, const T &max);
         static GuardResponse combine(const GuardResponse *guardResponses, size_t size);
