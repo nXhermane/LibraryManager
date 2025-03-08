@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # add includes directories to the project and access to relative path 
-include_directories("./includes" "includes/shared/core" "includes/shared/domain" "./includes/shared/exceptions" "./includes/value-objects" "./includes/entities")
+include_directories(includes)
 
 # list all source file 
 file(GLOB_RECURSE SOURCE_FILE "./src/*.cpp")

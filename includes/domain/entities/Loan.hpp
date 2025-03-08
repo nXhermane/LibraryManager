@@ -4,9 +4,9 @@
 #include <memory>
 #include <optional>
 
-#include "Book.hpp"
-#include "Entity.hpp"
-#include "User.hpp"
+#include "domain/entities/Book.hpp"
+#include "shared/domain/Entity.hpp"
+#include "domain/entities/User.hpp"
 namespace AvancedLibrary {
     class Book;
     class User;

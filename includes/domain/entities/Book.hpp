@@ -2,8 +2,8 @@
 #include <set>
 #include <vector>
 
-#include "Entity.hpp"
-#include "Review.hpp"
+#include "shared/domain/Entity.hpp"
+#include "domain/entities/Review.hpp"
 namespace AvancedLibrary {
     class Review;
     enum BookStatus { AVAILABLE, RESERVED, BORROWED, MAINTENANCE };

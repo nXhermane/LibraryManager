@@ -1,9 +1,9 @@
 #include <chrono>
 
 
-#include "Entity.hpp"
+#include "shared/domain/Entity.hpp"
 
-#include "Loan.hpp"
+#include "domain/entities/Loan.hpp"
 
 namespace AvancedLibrary {
   Loan::Loan(Domain::CreateEntityProps < LoanProps > & entityProps): Domain::Entity < LoanProps > (entityProps) {

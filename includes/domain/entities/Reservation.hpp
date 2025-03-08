@@ -4,8 +4,8 @@
 #include <memory>
 #include <optional>
 
-#include "Book.hpp"
-#include "User.hpp"
+#include "domain/entities/Book.hpp"
+#include "domain/entities/User.hpp"
 namespace AvancedLibrary {
     enum ReservationStatus { WAITING, NOTIFIED, EXPIRED, COMPLETED };
     struct ReservationProps {

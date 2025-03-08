@@ -1,12 +1,14 @@
-#include <iostream>
 #include <vector>
 
-#include "Entity.hpp"
-#include "Exceptions.hpp"
-#include "Guard.hpp"
-#include "User.hpp"
+#include "domain/entities/User.hpp"
+#include "shared/core/Guard.hpp"
+#include "shared/domain/Entity.hpp"
+#include "shared/exceptions/Exceptions.hpp"
 
 namespace AvancedLibrary {
+    // Constant
+    const unsigned User::DEFAULT_MAX_LOAN{5};
+    // implementation of User entity
     User::User(Domain::CreateEntityProps<UserProps>& entityProps) : Domain::Entity<UserProps>(entityProps) {
         validate();
     }

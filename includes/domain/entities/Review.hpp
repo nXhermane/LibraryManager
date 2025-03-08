@@ -3,8 +3,8 @@
 #include <memory>
 #include <string>
 
-#include "Entity.hpp"
-#include "User.hpp"
+#include "shared/domain/Entity.hpp"
+#include "domain/entities/User.hpp"
 namespace AvancedLibrary {
     class Book;
     class User;

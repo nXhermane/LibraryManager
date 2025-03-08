@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-#include "ValueObject.hpp"
+#include "shared/domain/ValueObject.hpp"
 
 namespace AvancedLibrary {
     class Email : public Domain::ValueObject<std::string> {

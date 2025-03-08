@@ -2,8 +2,8 @@
 #include <optional>
 #include <stdexcept>
 
-#include "Entity.hpp"
-#include "Reservation.hpp"
+#include "shared/domain/Entity.hpp"
+#include "domain/entities/Reservation.hpp"
 namespace AvancedLibrary {
     Reservation::Reservation(Domain::CreateEntityProps<ReservationProps>& entityProps)
         : Domain::Entity<ReservationProps>(entityProps) {

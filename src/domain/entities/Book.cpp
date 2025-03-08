@@ -3,11 +3,11 @@
 #include <string>
 #include <vector>
 
-#include "Book.hpp"
-#include "Entity.hpp"
-#include "Exceptions.hpp"
-#include "Guard.hpp"
-#include "Review.hpp"
+#include "domain/entities/Book.hpp"
+#include "shared/domain/Entity.hpp"
+#include "shared/exceptions/Exceptions.hpp"
+#include "shared/core/Guard.hpp"
+#include "domain/entities/Review.hpp"
 namespace AvancedLibrary {
     // constructor
     Book::Book(Domain::CreateEntityProps<BookProps>& entityProps) : Domain::Entity<BookProps>(entityProps) {

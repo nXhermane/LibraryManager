@@ -1,10 +1,10 @@
 #include <format>
 #include <stdexcept>
 
-#include "Entity.hpp"
-#include "Exceptions.hpp"
-#include "Guard.hpp"
-#include "Review.hpp"
+#include "shared/domain/Entity.hpp"
+#include "shared/exceptions/Exceptions.hpp"
+#include "shared/core/Guard.hpp"
+#include "domain/entities/Review.hpp"
 namespace AvancedLibrary {
 
     Review::Review(Domain::CreateEntityProps<ReviewProps>& entityProps) : Domain::Entity<ReviewProps>(entityProps) {

@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
 
-#include "Email.hpp"
-#include "Entity.hpp"
-#include "Loan.hpp"
+#include "domain/entities/Loan.hpp"
+#include "domain/value-objects/Email.hpp"
+#include "shared/domain/Entity.hpp"
 namespace AvancedLibrary {
     class Loan;
     struct UserProps {
@@ -31,5 +31,7 @@ namespace AvancedLibrary {
         void addPenalty(double amount);
         void payPenalty(double amount);
         double getPenalties() const;
+
+        static const unsigned DEFAULT_MAX_LOAN;
     };
 }  // namespace AvancedLibrary

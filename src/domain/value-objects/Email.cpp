@@ -2,10 +2,10 @@
 #include <regex>
 #include <string>
 
-#include "Email.hpp"
-#include "Exceptions.hpp"
-#include "Guard.hpp"
-#include "ValueObject.hpp"
+#include "domain/value-objects/Email.hpp"
+#include "shared/exceptions/Exceptions.hpp"
+#include "shared/core/Guard.hpp"
+#include "shared/domain/ValueObject.hpp"
 namespace AvancedLibrary {
     Email::Email(std::string &email) : Domain::ValueObject<std::string>(Domain::DomainPrimitive<std::string>{email}) {
         validate(this->props);
