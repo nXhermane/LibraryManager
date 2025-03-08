@@ -1,10 +1,10 @@
 #include <format>
 #include <stdexcept>
 
+#include "domain/entities/Review.hpp"
+#include "shared/core/Guard.hpp"
 #include "shared/domain/Entity.hpp"
 #include "shared/exceptions/Exceptions.hpp"
-#include "shared/core/Guard.hpp"
-#include "domain/entities/Review.hpp"
 namespace AvancedLibrary {
 
     Review::Review(Domain::CreateEntityProps<ReviewProps>& entityProps) : Domain::Entity<ReviewProps>(entityProps) {
@@ -21,7 +21,7 @@ namespace AvancedLibrary {
         }
         this->_isValid = true;
     }
-    void Review::update(int rating, std::string& comment) {
+    void Review::update(unsigned rating, std::string& comment) {
         if (!canModify()) throw std::runtime_error("The Review cannot be modify.");
         props.set(&ReviewProps::rating, rating);
         props.set(&ReviewProps::comment, comment);
