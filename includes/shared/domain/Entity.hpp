@@ -59,6 +59,7 @@ namespace Domain {
         explicit Entity(CreateEntityProps<T>& entityProps);
         bool equals(const Entity<T>& entity) const;
         std::string getId() const;
+        std::string getCreatedAt() const ;
 
         GetPropsResult getProps() const;
         bool isValid() const;

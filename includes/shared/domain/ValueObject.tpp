@@ -1,7 +1,7 @@
 #pragma once
 #include <type_traits>
-#include "Exceptions.hpp"
-#include "Guard.hpp"
+#include "shared/exceptions/Exceptions.hpp"
+#include "shared/core/Guard.hpp"
 #include "ValueObject.hpp"
 
 namespace Domain {

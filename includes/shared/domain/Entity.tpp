@@ -1,4 +1,5 @@
 #pragma once
+
 #include <boost/uuid/random_generator.hpp>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
@@ -10,8 +11,8 @@
 #include <variant>
 
 #include "Entity.hpp"
-#include "Exceptions.hpp"
-#include "Guard.hpp"
+#include "shared/core/Guard.hpp"
+#include "shared/exceptions/Exceptions.hpp"
 
 namespace Domain {
     static boost::uuids::random_generator uuidGenerator;

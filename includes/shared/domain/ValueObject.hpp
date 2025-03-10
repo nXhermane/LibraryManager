@@ -6,7 +6,7 @@
 #include <type_traits>
 #include <variant>
 
-#include "Guard.hpp"
+#include "shared/core/Guard.hpp"
 namespace Domain {
 
     // Define primitive type

@@ -3,7 +3,9 @@
 #include "shared/infra/InfraMapper.hpp"
 
 namespace AvancedLibrary {
-    struct BookPersisitanceDto {};
+    struct BookPersisitanceDto {
+        
+    };
 
     class BookMapper : public Infra::InfraMapper<BookProps, Book, BookPersisitanceDto> {
        public:
