@@ -13,6 +13,7 @@
 #include "Entity.hpp"
 #include "shared/core/Guard.hpp"
 #include "shared/exceptions/Exceptions.hpp"
+#include "shared/utils/time_utils.hpp"
 
 namespace Domain {
     static boost::uuids::random_generator uuidGenerator;
@@ -85,7 +86,14 @@ namespace Domain {
             },
             id);
     }
-
+    template <typename T>
+    std::string Entity<T>::getCreatedAt() const {
+        return Utils::timePointToString(getProps().createdAt);
+    }
+    template <typename T>
+    std::string Entity<T>::getUpdatedAt() const {
+        return Utils::timePointToString(getProps().updatedAt);
+    }
     template <typename T>
     bool Entity<T>::isValid() const {
         try {

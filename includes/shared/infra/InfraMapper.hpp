@@ -2,7 +2,7 @@
 
 #include <type_traits>
 
-#include "Entity.hpp"
+#include "shared/domain/Entity.hpp"
 namespace Infra {
 
     template <typename T, typename Props>

@@ -60,6 +60,7 @@ namespace Domain {
         bool equals(const Entity<T>& entity) const;
         std::string getId() const;
         std::string getCreatedAt() const ;
+        std::string getUpdatedAt() const ;
 
         GetPropsResult getProps() const;
         bool isValid() const;

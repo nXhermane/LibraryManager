@@ -1,11 +1,12 @@
 #pragma once
-#include <Entity.hpp>
+
 #include <chrono>
 #include <memory>
 #include <optional>
 
 #include "domain/entities/Book.hpp"
 #include "domain/entities/User.hpp"
+#include "shared/domain/Entity.hpp"
 namespace AvancedLibrary {
     enum ReservationStatus { WAITING, NOTIFIED, EXPIRED, COMPLETED };
     struct ReservationProps {
