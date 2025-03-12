@@ -19,7 +19,7 @@ namespace AvancedLibrary {
     class LoanMapper : public Infra::InfraMapper<LoanProps, Loan, LoanPersistenceDto> {
        public:
         LoanMapper();
-        LoanPersistenceDto toPersistence(Loan &) const override;
-        Loan toDomain(LoanPersistenceDto &) const override;
+        LoanPersistenceDto toPersistence(const Loan &) const override;
+        Loan toDomain(const LoanPersistenceDto &) const override;
     };
 }  // namespace AvancedLibrary

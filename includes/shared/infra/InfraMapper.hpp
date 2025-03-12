@@ -14,7 +14,7 @@ namespace Infra {
 
        public:
         ~InfraMapper() = default;
-        virtual PersistenceDto toPersistence(T &) const = 0;
-        virtual T toDomain(PersistenceDto &) const = 0;
+        virtual PersistenceDto toPersistence(const T &) const = 0;
+        virtual T toDomain(const PersistenceDto &) const = 0;
     };
 }  // namespace Infra

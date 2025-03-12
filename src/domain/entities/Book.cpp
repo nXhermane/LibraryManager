@@ -62,6 +62,7 @@ namespace AvancedLibrary {
     const std::string& Book::getAuthor() const { return this->props.get().author; }
     const std::string& Book::getTitle() const { return this->props.get().title; }
     const std::string& Book::getIsbn() const { return this->props.get().isbn; }
+    unsigned int Book::getYear() const { return this->props.get().year; }
     BookStatus Book::getStatus() const { return this->props.get().status; }
     const std::vector<Review>& Book::getReviews() const { return this->props.get().reviews; }
     const std::vector<std::string> Book::getCategories() const {

@@ -16,12 +16,13 @@ namespace AvancedLibrary {
         unsigned int year;
         BookStatus status;
         std::vector<std::string> categories;
+        std::vector<std::string> reviewIds;
     };
 
     class BookMapper : public Infra::InfraMapper<BookProps, Book, BookPersisitanceDto> {
        public:
         BookMapper();
-        BookPersisitanceDto toPersistence(Book &) const override;
-        Book toDomain(BookPersisitanceDto &) const override;
+        BookPersisitanceDto toPersistence(const Book &) const override;
+        Book toDomain(const BookPersisitanceDto &) const override;
     };
 }  // namespace AvancedLibrary

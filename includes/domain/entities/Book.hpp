@@ -32,6 +32,7 @@ namespace AvancedLibrary {
         const std::string& getIsbn() const;
         const std::string& getTitle() const;
         const std::string& getAuthor() const;
+        unsigned int getYear() const;
         BookStatus getStatus() const;
         bool isAvailable() const;
         const std::vector<Review>& getReviews() const;
