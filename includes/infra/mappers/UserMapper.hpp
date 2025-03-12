@@ -20,7 +20,7 @@ namespace AvancedLibrary {
     class UserMapper : public Infra::InfraMapper<UserProps, User, UserPersistenceDto> {
        public:
         UserMapper();
-        UserPersistenceDto toPersistence(User &) const override;
-        User toDomain(UserPersistenceDto &) const override;
+        UserPersistenceDto toPersistence(const User &) const override;
+        User toDomain(const UserPersistenceDto &) const;
     };
 }  // namespace AvancedLibrary

@@ -18,7 +18,7 @@ namespace AvancedLibrary {
     class ReviewMapper : public Infra::InfraMapper<ReviewProps, Review, ReviewPersistenceDto> {
        public:
         ReviewMapper();
-        ReviewPersistenceDto toPersistence(Review &) const override;
-        Review toDomain(ReviewPersistenceDto &) const override;
+        ReviewPersistenceDto toPersistence(const Review &) const override;
+        Review toDomain(const ReviewPersistenceDto &) const ;
     };
 }  // namespace AvancedLibrary

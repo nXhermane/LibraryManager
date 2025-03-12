@@ -1,19 +1,16 @@
 #pragma once
 
 #include <chrono>
-#include <memory>
 #include <optional>
 
-#include "domain/entities/Book.hpp"
-#include "domain/entities/User.hpp"
 #include "shared/domain/Entity.hpp"
 namespace AvancedLibrary {
     enum ReservationStatus { WAITING, NOTIFIED, EXPIRED, COMPLETED };
     struct ReservationProps {
         std::optional<std::chrono::time_point<std::chrono::system_clock>> reservationDate;
         std::optional<std::chrono::time_point<std::chrono::system_clock>> notificationDate;
-        std::shared_ptr<User> user;
-        std::shared_ptr<Book> book;
+        std::string userId;
+        std::string bookId;
         unsigned queuePosition;
         ReservationStatus status;
     };

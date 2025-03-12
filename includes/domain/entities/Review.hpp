@@ -1,9 +1,7 @@
 #pragma once
 #include <chrono>
-#include <memory>
 #include <string>
 
-#include "domain/entities/User.hpp"
 #include "shared/domain/Entity.hpp"
 namespace AvancedLibrary {
     class Book;
@@ -13,8 +11,8 @@ namespace AvancedLibrary {
         std::string comment;
         bool modified;
         std::chrono::time_point<std::chrono::system_clock> date;
-        std::shared_ptr<User> user;
-        std::shared_ptr<Book> book;
+        std::string userId;
+        std::string bookId;
     };
 
     class Review : public Domain::Entity<ReviewProps> {

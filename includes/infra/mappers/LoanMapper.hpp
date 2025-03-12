@@ -1,6 +1,6 @@
 #pragma once
 #include <optional>
-#include <string> 
+#include <string>
 
 #include "domain/entities/Loan.hpp"
 #include "shared/infra/InfraMapper.hpp"
@@ -20,6 +20,6 @@ namespace AvancedLibrary {
        public:
         LoanMapper();
         LoanPersistenceDto toPersistence(const Loan &) const override;
-        Loan toDomain(const LoanPersistenceDto &) const override;
+        Loan toDomain(const LoanPersistenceDto &) const;
     };
 }  // namespace AvancedLibrary

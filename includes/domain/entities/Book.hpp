@@ -2,10 +2,9 @@
 #include <set>
 #include <vector>
 
-#include "shared/domain/Entity.hpp"
 #include "domain/entities/Review.hpp"
+#include "shared/domain/Entity.hpp"
 namespace AvancedLibrary {
-    class Review;
     enum BookStatus { AVAILABLE, RESERVED, BORROWED, MAINTENANCE };
     struct BookProps {
         std::string isbn;
@@ -13,7 +12,7 @@ namespace AvancedLibrary {
         std::string author;
         unsigned int year;
         BookStatus status;
-        std::vector<Review> reviews;
+        std::vector<std::string> reviews;
         std::set<std::string> categories;
     };
     class Book : public Domain::Entity<BookProps> {

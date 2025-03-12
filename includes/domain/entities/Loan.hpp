@@ -1,12 +1,9 @@
 #pragma once
 
 #include <chrono>
-#include <memory>
 #include <optional>
 
-#include "domain/entities/Book.hpp"
 #include "shared/domain/Entity.hpp"
-#include "domain/entities/User.hpp"
 namespace AvancedLibrary {
     class Book;
     class User;
@@ -16,8 +13,8 @@ namespace AvancedLibrary {
         std::optional<std::chrono::time_point<std::chrono::system_clock>> dueDate;
         std::optional<std::chrono::time_point<std::chrono::system_clock>> returnDate;
         LoanStatus status;
-        std::shared_ptr<User> user;
-        std::shared_ptr<Book> book;
+        std::string userId;
+        std::string bookId;
     };
     class Loan : public Domain::Entity<LoanProps> {
        public:

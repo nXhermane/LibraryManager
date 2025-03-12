@@ -23,6 +23,6 @@ namespace AvancedLibrary {
        public:
         BookMapper();
         BookPersisitanceDto toPersistence(const Book &) const override;
-        Book toDomain(const BookPersisitanceDto &) const override;
+        Book toDomain(const BookPersisitanceDto &) const;
     };
 }  // namespace AvancedLibrary

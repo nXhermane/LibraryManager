@@ -18,7 +18,7 @@ namespace AvancedLibrary {
     class ReservationMapper : public Infra::InfraMapper<ReservationProps, Reservation, ReservationPersistenceDto> {
        public:
         ReservationMapper();
-        ReservationPersistenceDto toPersistence(Reservation &) const override;
-        Reservation toDomain(ReservationPersistenceDto &) const override;
+        ReservationPersistenceDto toPersistence(const Reservation &) const override;
+        Reservation toDomain(const ReservationPersistenceDto &) const ;
     };
 }  // namespace AvancedLibrary

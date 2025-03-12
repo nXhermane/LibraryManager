@@ -11,8 +11,8 @@ namespace AvancedLibrary {
         std::string username;
         Email email;
         unsigned int maxLoan;
-        std::vector<Loan> activeLoans;
-        std::vector<Loan> loanHistory;
+        std::vector<std::string> activeLoans;
+        std::vector<std::string> loanHistory;
         double penalties;
     };
 
@@ -25,8 +25,8 @@ namespace AvancedLibrary {
         void validate() const override;
 
         bool canBorrow() const;
-        const std::vector<Loan> &getActiveLoans() const;
-        const std::vector<Loan> &getLoanHistory() const;
+        const std::vector<std::string> &getActiveLoans() const;
+        const std::vector<std::string> &getLoanHistory() const;
         void addLoan(Loan &loan);
         void addPenalty(double amount);
         void payPenalty(double amount);
