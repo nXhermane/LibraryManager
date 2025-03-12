@@ -12,8 +12,7 @@ namespace AvancedLibrary {
                                        review.getProps().rating,
                                        review.getProps().modified,
                                        Utils::timePointToString(review.getProps().date),
-                                       review.getProps().book->getId(),
-                                       review.getProps().user->getId()};
+                                       review.getProps().userId};
         return reviewDto;
     }
 }  // namespace AvancedLibrary

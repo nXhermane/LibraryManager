@@ -22,9 +22,6 @@ namespace AvancedLibrary {
     }
     void Loan::validate() const {
         this->_isValid = false;
-        if (Core::Guard::isEmpty(getProps().userId).succeeded) {
-            throw std::runtime_error("Utilisateur invalide : null");
-        }
         if (Core::Guard::isEmpty(getProps().bookId).succeeded) {
             throw std::runtime_error("Livre invalide : null");
         }

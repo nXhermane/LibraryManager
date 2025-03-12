@@ -1,6 +1,6 @@
 #pragma once
-#include "Factory.hpp"
-#include "Result.hpp"
+#include "shared/domain/Factory.hpp"
+#include "shared/core/Result.hpp"
 #include "domain/entities/Book.hpp"
 
 namespace AvancedLibrary {

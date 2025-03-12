@@ -12,7 +12,7 @@ namespace AvancedLibrary {
         std::string author;
         unsigned int year;
         BookStatus status;
-        std::vector<std::string> reviews;
+        std::vector<Review> reviews;
         std::set<std::string> categories;
     };
     class Book : public Domain::Entity<BookProps> {

@@ -1,10 +1,10 @@
 #include <optional>
 
-#include "Entity.hpp"
-#include "Result.hpp"
 #include "domain/entities/User.hpp"
 #include "domain/factories/UserFactory.hpp"
 #include "domain/value-objects/Email.hpp"
+#include "shared/core/Result.hpp"
+#include "shared/domain/Entity.hpp"
 
 namespace AvancedLibrary {
     UserFactory::UserFactory(){};

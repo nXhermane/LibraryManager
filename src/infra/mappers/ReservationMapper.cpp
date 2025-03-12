@@ -11,8 +11,8 @@ namespace AvancedLibrary {
             reservation.getUpdatedAt(),
             Utils::timePointToString(reservation.getProps().reservationDate.value()),
             Utils::timePointToString(reservation.getProps().notificationDate.value()),
-            reservation.getProps().user->getId(),
-            reservation.getProps().book->getId(),
+            reservation.getProps().userId,
+            reservation.getProps().bookId,
             reservation.getProps().queuePosition,
             reservation.getProps().status};
         return reservationDto;

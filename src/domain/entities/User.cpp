@@ -19,16 +19,6 @@ namespace AvancedLibrary {
         if (Core::Guard::isEmpty(getProps().username).succeeded) {
             throw EmptyStringExcepiton("The username of User cannot be empty.");
         }
-        std::for_each(props.get().activeLoans.begin(),props.get().activeLoans.end(),[](auto & loanID){
-            if (Core::Guard::isEmpty(loanID).succeeded) {
-                throw EmptyStringExcepiton("The loan ID cannot be empty.");
-            }
-        });
-        std::for_each(props.get().loanHistory.begin(),props.get().loanHistory.end(),[](auto & loanID){
-            if (Core::Guard::isEmpty(loanID).succeeded) {
-                throw EmptyStringExcepiton("The loan ID cannot be empty.");
-            }
-        }); 
         if (getProps().username.size() < 3) {
             throw EmptyStringExcepiton("Le nom de l'utilisateur ne peux etre en dessous de 3 charactere.");
         }
@@ -57,6 +47,6 @@ namespace AvancedLibrary {
         props.set(&UserProps::penalties, Core::Guard::isNegative(diffPenalty).succeeded ? 0.0 : diffPenalty);
     }
     double User::getPenalties() const { return getProps().penalties; }
-    const std::vector<std::string>& User::getActiveLoans() const { return props.get().activeLoans; }
-    const std::vector<std::string>& User::getLoanHistory() const { return props.get().loanHistory; }
+    const std::vector<Loan>& User::getActiveLoans() const { return props.get().activeLoans; }
+    const std::vector<Loan>& User::getLoanHistory() const { return props.get().loanHistory; }
 }  // namespace AvancedLibrary

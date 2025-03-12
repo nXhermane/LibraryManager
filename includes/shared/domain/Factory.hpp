@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Entity.hpp"
-#include "Result.hpp"
+#include "shared/core/Result.hpp"
 namespace Core {
     template <typename T, typename Props>
     concept AllowedClass = std::is_base_of_v<Domain::Entity<Props>, T>;

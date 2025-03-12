@@ -15,9 +15,6 @@ namespace AvancedLibrary {
         if (Core::Guard::isEmpty(getProps().userId).succeeded) {
             throw EmptyStringExcepiton("The user id cannot be empty.");
         }
-        if (Core::Guard::isEmpty(getProps().bookId).succeeded) {
-            throw EmptyStringExcepiton("The book id cannot be empty.");
-        }
         if (Core::Guard::inRange(getProps().rating, minRating, maxRating).succeeded) {
             throw ArgumentOutOfRangeException(
                 std::format("The rating may be in this interval : {} - {}", minRating, maxRating));

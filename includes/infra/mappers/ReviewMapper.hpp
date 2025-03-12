@@ -13,7 +13,6 @@ namespace AvancedLibrary {
         bool modified;
         std::string date;
         std::string userId;
-        std::string bookId;
     };
     class ReviewMapper : public Infra::InfraMapper<ReviewProps, Review, ReviewPersistenceDto> {
        public:

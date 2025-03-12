@@ -37,11 +37,9 @@ namespace AvancedLibrary {
     }
     void Book::addReview(Review& review) {
         Domain::Entity<ReviewProps>::GetPropsResult reviewProps = review.getProps();
-        if (reviewProps.book->getId() != getId())
-            throw std::runtime_error("This review cannot be added to this Book because is not for this book");
         std::vector<Review> const reviews = this->getProps().reviews;
         for (const Review it : reviews) {
-            if (it.getProps().user->getId() == reviewProps.user->getId())
+            if (it.getProps().userId == reviewProps.userId)
                 throw std::runtime_error("The user must be added just one review per book");
         }
         this->props.modify(&BookProps::reviews,

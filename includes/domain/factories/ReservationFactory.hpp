@@ -1,14 +1,13 @@
 #pragma once
-#include <memory>
+#include <string>
 
-#include "Factory.hpp"
-#include "Result.hpp"
+#include "shared/domain/Factory.hpp"
+#include "shared/core/Result.hpp"
 #include "domain/entities/Reservation.hpp"
-#include "domain/entities/User.hpp"
 namespace AvancedLibrary {
     struct CreateReservationProps {
-        std::shared_ptr<User> user;
-        std::shared_ptr<Book> book;
+        std::string userId;
+        std::string bookId;
         unsigned queuePosition;
     };
     class ReservationFactory : public Core::Factory<ReservationProps, Reservation, CreateReservationProps> {

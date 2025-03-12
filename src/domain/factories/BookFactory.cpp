@@ -1,7 +1,7 @@
 #include <optional>
 
-#include "Entity.hpp"
-#include "Result.hpp"
+#include "shared/domain/Entity.hpp"
+#include "shared/core/Result.hpp"
 #include "domain/entities/Book.hpp"
 #include "domain/entities/Review.hpp"
 #include "domain/factories/BookFactory.hpp"

@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 
-#include "Factory.hpp"
-#include "Result.hpp"
+#include "shared/domain/Factory.hpp"
+#include "shared/core/Result.hpp"
 #include "domain/entities/User.hpp"
 namespace AvancedLibrary {
     struct CreateUserProps {

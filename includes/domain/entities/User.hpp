@@ -5,14 +5,13 @@
 #include "domain/value-objects/Email.hpp"
 #include "shared/domain/Entity.hpp"
 namespace AvancedLibrary {
-    class Loan;
     struct UserProps {
         std::string name;
         std::string username;
         Email email;
         unsigned int maxLoan;
-        std::vector<std::string> activeLoans;
-        std::vector<std::string> loanHistory;
+        std::vector<Loan> activeLoans;
+        std::vector<Loan> loanHistory;
         double penalties;
     };
 
@@ -25,8 +24,8 @@ namespace AvancedLibrary {
         void validate() const override;
 
         bool canBorrow() const;
-        const std::vector<std::string> &getActiveLoans() const;
-        const std::vector<std::string> &getLoanHistory() const;
+        const std::vector<Loan> &getActiveLoans() const;
+        const std::vector<Loan> &getLoanHistory() const;
         void addLoan(Loan &loan);
         void addPenalty(double amount);
         void payPenalty(double amount);

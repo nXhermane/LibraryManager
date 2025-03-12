@@ -13,9 +13,9 @@ namespace AvancedLibrary {
         std::string dueDate;
         std::optional<std::string> returnDate;
         LoanStatus status;
-        std::string userId;
         std::string bookId;
     };
+    
     class LoanMapper : public Infra::InfraMapper<LoanProps, Loan, LoanPersistenceDto> {
        public:
         LoanMapper();

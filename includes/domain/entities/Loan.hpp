@@ -5,15 +5,12 @@
 
 #include "shared/domain/Entity.hpp"
 namespace AvancedLibrary {
-    class Book;
-    class User;
     enum LoanStatus { ACTIVED, RETURNED, OVERDUE, EXTENDED };
     struct LoanProps {
         std::optional<std::chrono::time_point<std::chrono::system_clock>> startDate;
         std::optional<std::chrono::time_point<std::chrono::system_clock>> dueDate;
         std::optional<std::chrono::time_point<std::chrono::system_clock>> returnDate;
         LoanStatus status;
-        std::string userId;
         std::string bookId;
     };
     class Loan : public Domain::Entity<LoanProps> {
