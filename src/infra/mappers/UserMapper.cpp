@@ -2,7 +2,10 @@
 #include <string>
 
 #include "domain/entities/User.hpp"
+#include "domain/value-objects/Email.hpp"
 #include "infra/mappers/UserMapper.hpp"
+#include "shared/domain/Entity.hpp"
+#include "shared/utils/time_utils.hpp"
 namespace AvancedLibrary {
     UserMapper::UserMapper() {}
     UserPersistenceDto UserMapper::toPersistence(const User& user) const {
@@ -25,5 +28,14 @@ namespace AvancedLibrary {
                        [](const auto& loan) -> std::string { return loan.getId(); });
         userDto.penalties = user.getProps().penalties;
         return userDto;
+    }
+    User UserMapper::toDomain(const UserToDomainRecord& userRecord) const {
+        std::string email{userRecord.email};
+        Domain::CreateEntityProps<UserProps> entityProps{
+            userRecord.id, Utils::stringToTimePoint(userRecord.createdAt),
+            Utils::stringToTimePoint(userRecord.updatedAt),
+            UserProps{userRecord.name, userRecord.username, Email{email}, userRecord.maxLoan, userRecord.activeLoans,
+                      userRecord.loanHistory, userRecord.penalties}};
+        return User(entityProps);
     }
 }  // namespace AvancedLibrary

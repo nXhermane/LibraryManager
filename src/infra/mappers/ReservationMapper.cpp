@@ -17,4 +17,14 @@ namespace AvancedLibrary {
             reservation.getProps().status};
         return reservationDto;
     }
+
+    Reservation ReservationMapper::toDomain(const ReservationPersistenceDto& reservation) const {
+        Domain::CreateEntityProps<ReservationProps> entityProps{
+            reservation.id, Utils::stringToTimePoint(reservation.createdAt),
+            Utils::stringToTimePoint(reservation.updatedAt),
+            ReservationProps{Utils::stringToTimePoint(reservation.reservationDate),
+                             Utils::stringToTimePoint(reservation.notificationDate), reservation.userId,
+                             reservation.bookId, reservation.queuePosition, reservation.status}};
+        return Reservation{entityProps};
+    }
 }  // namespace AvancedLibrary

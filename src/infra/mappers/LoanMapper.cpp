@@ -23,7 +23,11 @@ namespace AvancedLibrary {
         Domain::CreateEntityProps<LoanProps> entityProps{
             loan.id, Utils::stringToTimePoint(loan.createdAt), Utils::stringToTimePoint(loan.updatedAt),
             LoanProps{Utils::stringToTimePoint(loan.startDate), Utils::stringToTimePoint(loan.dueDate),
-                      (loan.returnDate.has_value()) ? (std::make_optional(loan.returnDate.value())) : ("")}};
+                      (loan.returnDate.has_value())
+                          ? (std::make_optional(Utils::stringToTimePoint(loan.returnDate.value())))
+                          : std::nullopt,
+                      loan.status, loan.bookId}};
+        return Loan{entityProps};
     }
 
 }  // namespace AvancedLibrary

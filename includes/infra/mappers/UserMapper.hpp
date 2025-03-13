@@ -34,6 +34,6 @@ namespace AvancedLibrary {
        public:
         UserMapper();
         UserPersistenceDto toPersistence(const User &) const override;
-        User toDomain(const UserPersistenceDto &) const;
+        User toDomain(const UserToDomainRecord &) const;
     };
 }  // namespace AvancedLibrary
