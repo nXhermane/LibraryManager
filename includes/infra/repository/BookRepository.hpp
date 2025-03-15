@@ -3,8 +3,9 @@
 #include <vector>
 
 #include "domain/entities/Book.hpp"
-#include "shared/infra/Repository.hpp"
 #include "infra/dtos/BookPersistenceDto.hpp"
+#include "shared/infra/JsonStoreService.hpp"
+#include "shared/infra/Repository.hpp"
 namespace AvancedLibrary {
     class BookRepository : public Infra::Repository<BookProps, Book> {
        public:
@@ -16,12 +17,14 @@ namespace AvancedLibrary {
         std::vector<Book> getAll() const override;
     };
     class JsonBookRepository : public Infra::Repository<BookProps, Book> {
-        private: 
-        std::string filename;
+       private:
         std::vector<BookPersistenceDto> store;
-        
+        Infra::JsonStoreService jsonStore;
+        void loadFromFile();
+        void saveToFile();
+
        public:
-        JsonBookRepository();
+        JsonBookRepository(std::string &);
 
         void save(Book &) override;
         void remove(std::string &id) override;

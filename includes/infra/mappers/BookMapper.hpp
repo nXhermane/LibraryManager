@@ -1,4 +1,5 @@
 #pragma once
+#include <boost/json/object.hpp>
 #include <string>
 #include <vector>
 
@@ -8,6 +9,7 @@
 #include "shared/infra/InfraMapper.hpp"
 
 namespace AvancedLibrary {
+ 
     struct BookToDomainRecord {
         std::string id;
         std::string createdAt;

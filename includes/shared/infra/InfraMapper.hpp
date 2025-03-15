@@ -1,10 +1,12 @@
 #pragma once
 
+#include <boost/json.hpp>
+#include <boost/json/object.hpp>
 #include <type_traits>
 
 #include "shared/domain/Entity.hpp"
-namespace Infra {
 
+namespace Infra {
     template <typename T, typename Props>
     concept InfraAllowedClass = std::is_base_of_v<Domain::Entity<Props>, T>;
     template <typename Props, InfraAllowedClass<Props> T, typename PersistenceDto>

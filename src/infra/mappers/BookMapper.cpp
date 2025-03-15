@@ -1,17 +1,19 @@
 #include <algorithm>
+#include <boost/json/fwd.hpp>
+#include <boost/json/object.hpp>
 #include <set>
 
 #include "domain/entities/Book.hpp"
+#include "infra/dtos/BookPersistenceDto.hpp"
 #include "infra/mappers/BookMapper.hpp"
 #include "shared/domain/Entity.hpp"
 #include "shared/utils/time_utils.hpp"
-#include "infra/dtos/BookPersistenceDto.hpp"
 namespace AvancedLibrary {
     BookMapper::BookMapper() {}
     BookPersistenceDto BookMapper::toPersistence(const Book& book) const {
         BookPersistenceDto bookDto{book.getId(),   book.getCreatedAt(), book.getUpdatedAt(),
-                                    book.getIsbn(), book.getTitle(),     book.getAuthor(),
-                                    book.getYear(), book.getStatus(),    book.getCategories()};
+                                   book.getIsbn(), book.getTitle(),     book.getAuthor(),
+                                   book.getYear(), book.getStatus(),    book.getCategories()};
         auto reviews{book.getReviews()};
         bookDto.reviewIds.reserve(reviews.size());
         std::transform(reviews.begin(), reviews.end(), bookDto.reviewIds.begin(),
@@ -29,5 +31,6 @@ namespace AvancedLibrary {
 
         return Book{entityProps};
     };
-
+   
+ 
 }  // namespace AvancedLibrary
