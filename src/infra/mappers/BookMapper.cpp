@@ -5,10 +5,11 @@
 #include "infra/mappers/BookMapper.hpp"
 #include "shared/domain/Entity.hpp"
 #include "shared/utils/time_utils.hpp"
+#include "infra/dtos/BookPersistenceDto.hpp"
 namespace AvancedLibrary {
     BookMapper::BookMapper() {}
-    BookPersisitanceDto BookMapper::toPersistence(const Book& book) const {
-        BookPersisitanceDto bookDto{book.getId(),   book.getCreatedAt(), book.getUpdatedAt(),
+    BookPersistenceDto BookMapper::toPersistence(const Book& book) const {
+        BookPersistenceDto bookDto{book.getId(),   book.getCreatedAt(), book.getUpdatedAt(),
                                     book.getIsbn(), book.getTitle(),     book.getAuthor(),
                                     book.getYear(), book.getStatus(),    book.getCategories()};
         auto reviews{book.getReviews()};

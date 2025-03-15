@@ -4,20 +4,10 @@
 
 #include "domain/entities/Loan.hpp"
 #include "domain/entities/User.hpp"
+#include "infra/dtos/UserPersistenceDto.hpp"
 #include "shared/infra/InfraMapper.hpp"
 namespace AvancedLibrary {
-    struct UserPersistenceDto {
-        std::string id;
-        std::string createdAt;
-        std::string updatedAt;
-        std::string name;
-        std::string username;
-        std::string email;
-        unsigned int maxLoan;
-        std::vector<std::string> activeLoans;
-        std::vector<std::string> loanHistory;
-        double penalties;
-    };
+
     struct UserToDomainRecord {
         std::string id;
         std::string createdAt;

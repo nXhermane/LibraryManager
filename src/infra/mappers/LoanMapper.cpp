@@ -1,6 +1,7 @@
 #include <optional>
 
 #include "domain/entities/Loan.hpp"
+#include "infra/dtos/LoanPersistenceDto.hpp"
 #include "infra/mappers/LoanMapper.hpp"
 #include "shared/domain/Entity.hpp"
 #include "shared/utils/time_utils.hpp"

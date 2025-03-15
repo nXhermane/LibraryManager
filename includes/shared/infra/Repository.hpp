@@ -3,7 +3,7 @@
 #include <type_traits>
 #include <vector>
 
-#include "Entity.hpp"
+#include "shared/domain/Entity.hpp"
 namespace Infra {
     template <typename T, typename Props>
     concept RepositoryAllowedClass = std::is_base_of_v<Domain::Entity<Props>, T>;

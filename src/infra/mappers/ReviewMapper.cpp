@@ -17,7 +17,7 @@ namespace AvancedLibrary {
                                        review.getProps().userId};
         return reviewDto;
     }
-    
+
     Review ReviewMapper::toDomain(const ReviewPersistenceDto& reviewDto) const {
         Domain::CreateEntityProps<ReviewProps> entityProps{
             reviewDto.id, Utils::stringToTimePoint(reviewDto.createdAt), Utils::stringToTimePoint(reviewDto.updatedAt),

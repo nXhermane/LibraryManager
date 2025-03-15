@@ -13,4 +13,5 @@ namespace AvancedLibrary {
         Loan getById(std::string& id) const override;
         std::vector<Loan> getAll() const override;
     };
+    
 }  // namespace AvancedLibrary
