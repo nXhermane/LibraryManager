@@ -10,5 +10,7 @@ namespace AvancedLibrary {
         LoanMapper();
         LoanPersistenceDto toPersistence(const Loan &) const override;
         Loan toDomain(const LoanPersistenceDto &) const;
+
+        
     };
 }  // namespace AvancedLibrary

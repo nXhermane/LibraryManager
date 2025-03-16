@@ -18,16 +18,17 @@ namespace AvancedLibrary {
         BookStatus status;
         std::vector<std::string> categories;
         std::vector<std::string> reviewIds;
-        Infra::Json::object toJson(const BookPersistenceDto& book) const {
-            return {{"id", book.id},
-                    {"createdAt", book.createdAt},
-                    {"updatedAt", book.updatedAt},
-                    {"isbn", book.isbn},
-                    {"author", book.author},
-                    {"year", book.year},
-                    {"staus", static_cast<int>(book.status)},
-                    {"cateorires", Infra::Json::value_from(book.categories)},
-                    {"reviewIds", Infra::Json::value_from(book.reviewIds)}};
+
+        Infra::Json::object toJson() const {
+            return {{"id", id},
+                    {"createdAt", createdAt},
+                    {"updatedAt", updatedAt},
+                    {"isbn", isbn},
+                    {"author", author},
+                    {"year", year},
+                    {"staus", static_cast<int>(status)},
+                    {"cateorires", Infra::Json::value_from(categories)},
+                    {"reviewIds", Infra::Json::value_from(reviewIds)}};
         }
         static BookPersistenceDto formJson(const Infra::Json::object& obj) {
             return {obj.at("id").as_string().c_str(),
