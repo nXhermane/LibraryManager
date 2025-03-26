@@ -4,6 +4,7 @@
 #include <boost/json.hpp>
 #include <boost/json/array.hpp>
 #include <condition_variable>
+#include <functional>
 #include <mutex>
 #include <string>
 #include <thread>
@@ -15,7 +16,6 @@ namespace Infra {
         std::string filePath;
         std::mutex fileMutex;
         Json::value buffer;
-        Json::value prevBuffer;
         std::condition_variable saveCondition;
         std::atomic<bool> stopThread{false};
         std::thread saveThread;
@@ -23,9 +23,10 @@ namespace Infra {
         unsigned saveIntervalInSeconds{10};
         void initAutoSaveThread();
         void forceSave();
+        std::function<void(JsonStoreService &)> repoSaveCallBack;
 
        public:
-        explicit JsonStoreService(const std::string &);
+        explicit JsonStoreService(const std::string &,std::function<void(JsonStoreService&)>);
 
         JsonArray load();
         void save(const JsonArray &);

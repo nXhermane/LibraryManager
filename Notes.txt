@@ -1,0 +1,1 @@
+Je suis au niveau de bookRepository Json dans la methode de conversion vers Record et la j'ai une erreur de copy de review dans std::transform 

@@ -12,7 +12,10 @@
 
 #include "shared/infra/JsonStoreService.hpp"
 namespace Infra {
-    JsonStoreService::JsonStoreService(const std::string& path) : filePath(path) { initAutoSaveThread(); }
+    JsonStoreService::JsonStoreService(const std::string& path, std::function<void(Infra::JsonStoreService&)> callback)
+        : filePath(path), repoSaveCallBack(callback) {
+        initAutoSaveThread();
+    }
 
     JsonStoreService::~JsonStoreService() {
         stopThread = true;
@@ -21,19 +24,19 @@ namespace Infra {
     }
     void JsonStoreService::initAutoSaveThread() {
         buffer = load();
-        prevBuffer = buffer;
         saveThread = std::thread([this]() {
             std::unique_lock<std::mutex> lock(fileMutex);
             while (!stopThread) {
-                saveCondition.wait_for(lock, std::chrono::seconds(saveIntervalInSeconds),
-                                       [this] { return dataChanged || stopThread; });
+                saveCondition.wait_for(lock, std::chrono::seconds(saveIntervalInSeconds), [this] {
+                    repoSaveCallBack(*this);
+                    return dataChanged || stopThread;
+                });
                 if (stopThread) break;
                 if (dataChanged) {
                     forceSave();
                     dataChanged = false;
                 }
-
-                save(buffer.as_array());
+                std::cout << "Verify Where you delete the call of save methode" << std::endl;
             }
         });
     }
@@ -55,15 +58,16 @@ namespace Infra {
 
     void JsonStoreService::save(const JsonArray& data) {
         std::lock_guard<std::mutex> lock(fileMutex);
-        buffer = data;
-        if (buffer != prevBuffer) {
+
+        if (data != buffer) {
             dataChanged = true;
+            buffer = data;
             saveCondition.notify_one();
         }
     }
     void JsonStoreService::forceSave() {
         std::lock_guard<std::mutex> lock(fileMutex);
-        if (buffer == prevBuffer) return;
+        if (!dataChanged) return;
         std::ofstream file(filePath);
 
         if (!file.is_open()) {
@@ -71,6 +75,5 @@ namespace Infra {
             return;
         }
         file << boost::json::serialize(buffer);
-        prevBuffer = buffer;
     }
 }  // namespace Infra

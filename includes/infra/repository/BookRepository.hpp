@@ -1,10 +1,12 @@
 #pragma once
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 #include "domain/entities/Book.hpp"
 #include "domain/entities/Review.hpp"
 #include "infra/dtos/BookPersistenceDto.hpp"
+#include "infra/mappers/BookMapper.hpp"
 #include "shared/infra/JsonStoreService.hpp"
 #include "shared/infra/Repository.hpp"
 namespace AvancedLibrary {
@@ -20,13 +22,16 @@ namespace AvancedLibrary {
     class JsonBookRepository : public Infra::Repository<BookProps, Book> {
        private:
         Infra::Repository<ReviewProps, Review> &reviewRepo;
-        std::vector<BookPersistenceDto> store;
+        std::unordered_map<std::string, BookPersistenceDto> store;
         Infra::JsonStoreService jsonStore;
+        BookMapper &mapper;
         void loadFromFile();
-        void saveToFile();
+        // void saveToFile();
+        void saveToFileCallBack(Infra::JsonStoreService &jsonstore);
+        BookToDomainRecord persistenceBookToRecordBook(const BookPersistenceDto &) const ;
 
        public:
-        JsonBookRepository(std::string &, Infra::Repository<ReviewProps, Review> &);
+        JsonBookRepository(std::string &, Infra::Repository<ReviewProps, Review> &,BookMapper &);
 
         void save(Book &) override;
         void remove(std::string &id) override;
