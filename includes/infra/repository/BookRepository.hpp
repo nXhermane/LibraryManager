@@ -21,6 +21,7 @@ namespace AvancedLibrary {
     };
     class JsonBookRepository : public Infra::Repository<BookProps, Book> {
        private:
+        bool storeChanged{false};
         Infra::Repository<ReviewProps, Review> &reviewRepo;
         std::unordered_map<std::string, BookPersistenceDto> store;
         Infra::JsonStoreService jsonStore;
@@ -28,10 +29,10 @@ namespace AvancedLibrary {
         void loadFromFile();
         // void saveToFile();
         void saveToFileCallBack(Infra::JsonStoreService &jsonstore);
-        BookToDomainRecord persistenceBookToRecordBook(const BookPersistenceDto &) const ;
+        BookToDomainRecord persistenceBookToRecordBook(const BookPersistenceDto &) const;
 
        public:
-        JsonBookRepository(std::string &, Infra::Repository<ReviewProps, Review> &,BookMapper &);
+        JsonBookRepository(std::string &, Infra::Repository<ReviewProps, Review> &, BookMapper &);
 
         void save(Book &) override;
         void remove(std::string &id) override;

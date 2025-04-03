@@ -1,1 +1,1 @@
-Je suis au niveau de bookRepository Json dans la methode de conversion vers Record et la j'ai une erreur de copy de review dans std::transform 
+Je suis au niveau de ReservationJsonRepository entrain d'implementer les methodes de loanFromfile dans le fichier sources 

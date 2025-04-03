@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <boost/json/object.hpp>
 #include <iostream>
+#include <iterator>
 #include <stdexcept>
 #include <vector>
 
@@ -30,30 +31,41 @@ namespace AvancedLibrary {
         }
     }
     void JsonBookRepository::saveToFileCallBack(Infra::JsonStoreService &jsonstore) {
+        if (!storeChanged) return;
         Infra::JsonArray bookJsonArray;
         for (auto &book : store) {
             bookJsonArray.push_back(book.second.toJson());
         };
         std::cout << "saveToFileCallBack" << std::endl;
         jsonstore.save(bookJsonArray);
+        storeChanged = false;
     }
     BookToDomainRecord JsonBookRepository::persistenceBookToRecordBook(const BookPersistenceDto &bookDto) const {
         std::vector<Review> reviews;
-        reviews.reserve(bookDto.reviewIds.size());
-        std::transform(bookDto.reviewIds.begin(), bookDto.reviewIds.end(), reviews.begin(),
+        std::transform(bookDto.reviewIds.begin(), bookDto.reviewIds.end(), std::back_inserter(reviews),
                        [this](auto reviewId) -> Review { return reviewRepo.getById(reviewId); });
-        BookToDomainRecord bookRecord{
-            bookDto.id,    bookDto.createdAt, bookDto.updatedAt, bookDto.isbn,
-            bookDto.title, bookDto.author,    bookDto.year,      bookDto.status,
-        };
+        BookToDomainRecord bookRecord{bookDto.id,    bookDto.createdAt, bookDto.updatedAt, bookDto.isbn,
+                                      bookDto.title, bookDto.author,    bookDto.year,      bookDto.status,
+                                      reviews,       bookDto.categories};
+        return bookRecord;
     }
 
     void JsonBookRepository::save(Book &book) {
         BookPersistenceDto bookDto{mapper.toPersistence(book)};
         auto it = store.find(bookDto.id);
-        it != store.end() ? it->second = bookDto : store[bookDto.id] = bookDto;
+        if (it != store.end())
+            it->second = bookDto;
+        else
+            store[bookDto.id] = bookDto;
+        storeChanged = true;
     }
-    void JsonBookRepository::remove(std::string &id) { store.erase(id); }
+    void JsonBookRepository::remove(std::string &id) {
+        auto it = store.find(id);
+        if (it != store.end()) {
+            store.erase(id);
+            storeChanged = true;
+        }
+    }
     Book JsonBookRepository::getById(std::string &id) const {
         auto it = store.find(id);
         if (it != store.end()) {
@@ -69,13 +81,5 @@ namespace AvancedLibrary {
         }
         return books;
     }
-
-    // void JsonBookRepository::saveToFile() {
-    //     Infra::JsonArray bookJsonArray;
-    //     for (auto &book : store) {
-    //         bookJsonArray.push_back(book.toJson());
-    //     };
-    //     jsonStore.save(bookJsonArray);
-    // }
 
 }  // namespace AvancedLibrary
